@@ -473,9 +473,12 @@
       var thumb = el("div", "thumb");
       if (p.image) {
         var img = document.createElement("img");
-        img.src = p.image;
+        img.src = p.image; // boleh URL gambar atau path lokal
         img.alt = "Tampilan project " + p.name;
         img.loading = "lazy";
+        img.onerror = function () {
+          thumb.replaceChild(el("span", "initials", initials(p.name)), img);
+        };
         thumb.appendChild(img);
       } else {
         thumb.appendChild(el("span", "initials", initials(p.name)));
