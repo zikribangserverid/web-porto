@@ -47,7 +47,7 @@ Static murni — **tanpa framework, tanpa build step, tanpa dependency**.
 | `services[]` | `icon` (`code`/`shield`/`server`/`globe`/`tool`), `features[]`, `priceNote`, `waMessage` |
 | `contact.whatsapp` | Nomor WA format internasional tanpa `+` (mis. `628123456789`) |
 | `contact.waDefaultMessage` | Pesan WA untuk tombol navbar & hero |
-| `contact.socials[]` | Ditampilkan sebagai ikon di kartu profil hero **dan** di footer. Ikon dikenali otomatis dari `label` (GitHub, Instagram, LinkedIn, X/Twitter, YouTube, Facebook, WhatsApp, Telegram, Email); label lain tampil sebagai teks |
+| `contact.socials[]` | Ditampilkan sebagai ikon di kartu profil hero **dan** di footer. **Hanya slot yang `url`-nya diisi yang tampil** — slot kosong otomatis dilewati, jadi kamu bebas menyiapkan banyak slot. Ikon dikenali otomatis dari `label` (GitHub, Instagram, LinkedIn, X/Twitter, YouTube, Facebook, WhatsApp, Telegram, Email); label lain tampil sebagai teks |
 | `contact.email` | Kontak footer — kosongkan untuk sembunyikan |
 
 ## Deploy

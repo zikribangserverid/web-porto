@@ -94,6 +94,13 @@
       .join("").slice(0, 2).toUpperCase();
   }
 
+  // Sosial media yang benar-benar diisi (punya label + url non-kosong).
+  function activeSocials() {
+    return (C.contact.socials || []).filter(function (s) {
+      return s && s.label && s.url && String(s.url).trim() !== "";
+    });
+  }
+
   // ---------- meta & theme ----------
   function applyMetaTheme() {
     document.title = C.meta.title;
@@ -239,11 +246,12 @@
       body.appendChild(readout);
     }
 
-    // sosial media
-    if (C.contact.socials && C.contact.socials.length) {
+    // sosial media (hanya yang diisi)
+    var socials = activeSocials();
+    if (socials.length) {
       body.appendChild(el("div", "pc-divider"));
       var soc = el("div", "pc-socials");
-      C.contact.socials.forEach(function (s) {
+      socials.forEach(function (s) {
         var a = extLink(el("a"), s.url);
         a.setAttribute("aria-label", s.label);
         a.title = s.label;
@@ -381,7 +389,7 @@
     inner.appendChild(brandText());
 
     var soc = el("div", "footer-socials");
-    (C.contact.socials || []).forEach(function (s) {
+    activeSocials().forEach(function (s) {
       soc.appendChild(extLink(el("a", null, s.label), s.url));
     });
     if (C.contact.email) {
