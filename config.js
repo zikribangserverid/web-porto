@@ -6,8 +6,8 @@ window.SITE_CONFIG = {
   meta: {
     title: "Zikri — Web Developer & Security Engineer | zikri.bangserverid",
     description:
-      "Zikri (zikri.bangserverid) — web developer & security engineer dari Indonesia. Jasa pembuatan website, security audit & pentest, dan manajemen server/VPS untuk freelancer & UMKM.",
-    url: "https://web-porto.pages.dev", // GANTI: URL final situs setelah deploy (atau custom domain)
+      "Zikri (zikri.bangserverid) — devops & security engineer dari Indonesia. Jasa pembuatan website, security audit & pentest, dan manajemen server/VPS untuk freelancer & UMKM.",
+    url: "https://zikri.karsaweb.id", // GANTI: URL final situs setelah deploy (atau custom domain)
     repo: "https://github.com/zikribangserverid/web-porto", // link repo (footer). Kosongkan "" untuk sembunyikan
     author: "Zikri",
     keywords: "web developer indonesia, jasa pembuatan website, security audit, penetration testing, pentest website, manajemen server, vps, devops, zikri.bangserverid, freelance developer indonesia",
@@ -125,12 +125,12 @@ window.SITE_CONFIG = {
   ],
 
   contact: {
-    whatsapp: "6281234567890", // GANTI: nomor WA kamu, format internasional tanpa +
+    whatsapp: "6285117142879", // GANTI: nomor WA kamu, format internasional tanpa + (angka saja)
     waDefaultMessage: "Halo Zikri, saya lihat portofolio kamu. Bisa diskusi project?",
     email: "kangserverid@gmail.com", // GANTI kalau perlu. Kosongkan "" untuk sembunyikan
     socials: [
       { label: "GitHub", url: "https://github.com/zikribangserverid" }, // GANTI kalau berbeda
-      { label: "Instagram", url: "" } // GANTI: isi URL Instagram kamu (kosong = tidak tampil)
+      { label: "Instagram", url: "https://www.instagram.com/zikri.bangserverid/" } // GANTI: isi URL Instagram kamu (kosong = tidak tampil)
     ]
   }
 };

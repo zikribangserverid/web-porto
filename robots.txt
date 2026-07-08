@@ -45,4 +45,4 @@ Allow: /
 User-agent: CCBot
 Allow: /
 
-Sitemap: https://web-porto.pages.dev/sitemap.xml
+Sitemap: https://zikri.karsaweb.id/sitemap.xml
