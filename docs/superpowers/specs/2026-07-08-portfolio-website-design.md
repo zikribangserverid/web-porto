@@ -160,7 +160,8 @@ Logo/brand, link sosial dari config, copyright mono kecil, credit: *"Template op
 
 ## 7. Open-source
 
-- README (ID, ringkasan EN singkat di bawah): screenshot, fitur, cara pakai (fork → edit `config.js` → deploy), tabel field config, opsi deploy (GitHub Pages/Cloudflare Pages/nginx), lisensi.
+- README (ID, ringkasan EN singkat di bawah): screenshot, fitur, cara pakai (fork → edit `config.js` → deploy), tabel field config, panduan deploy, lisensi.
+- **Panduan deploy di README** — **Cloudflare Pages sebagai jalur utama** (deploy milik Zikri juga ke sini), langkah demi langkah: connect repo GitHub → framework preset *None* → build command kosong → output directory `/` → deploy; termasuk cara set custom domain. Alternatif singkat: GitHub Pages dan nginx/Coolify.
 - LICENSE: MIT.
 - Semua placeholder di config diberi komentar `// GANTI:` agar pemakai tahu apa yang wajib diubah.
 
