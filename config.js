@@ -21,6 +21,7 @@ window.SITE_CONFIG = {
   profile: {
     brand: "zikri.bangserverid",
     logo: "assets/logo.png", // opsional — kalau file tidak ada, otomatis fallback ke logo teks
+    photo: "assets/profile.jpg", // GANTI: foto profil untuk kartu di hero. Kalau file tidak ada, otomatis fallback ke monogram inisial
     name: "Zikri",
     headline: {
       pre: "Web developer &",
@@ -34,7 +35,7 @@ window.SITE_CONFIG = {
       "Fokus saya membuat tools yang benar-benar dipakai: dari platform security operations untuk freelancer web, sampai aplikasi kasir untuk warung. Prinsip saya sederhana — software yang baik itu aman, cepat, dan jalan terus."
     ],
     terminal: {
-      title: "audit.log",
+      title: "whoami",
       lines: [
         { label: "role", value: "fullstack + security" },
         { label: "lokasi", value: "Indonesia" },

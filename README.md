@@ -37,15 +37,18 @@ Static murni — **tanpa framework, tanpa build step, tanpa dependency**.
 | `theme.accent` | Warna aksen (default teal `#2DD4BF`) |
 | `profile.brand` | Nama brand — dipakai logo teks & footer |
 | `profile.logo` | Path logo, fallback otomatis ke teks kalau file tidak ada |
+| `profile.photo` | Foto profil untuk kartu di hero. Fallback otomatis ke monogram inisial kalau file tidak ada |
+| `profile.name` | Nama yang ditonjolkan di kartu profil hero |
 | `profile.headline` | Judul hero: `pre` + `highlight` (diwarnai) + `post` |
 | `profile.tagline`, `profile.bio` | Tagline hero & paragraf bio (array) |
-| `profile.terminal` | Isi terminal card di hero (`lines`, `status`) |
+| `profile.terminal` | Readout mono di kartu profil hero (`title`, `lines`, `status`) |
 | `skills` | Array chip skill |
 | `projects[]` | `name`, `description`, `image`, `tech[]`, `url`, `status` (`live`/`wip`/`archived`) |
 | `services[]` | `icon` (`code`/`shield`/`server`/`globe`/`tool`), `features[]`, `priceNote`, `waMessage` |
 | `contact.whatsapp` | Nomor WA format internasional tanpa `+` (mis. `628123456789`) |
 | `contact.waDefaultMessage` | Pesan WA untuk tombol navbar & hero |
-| `contact.email`, `contact.socials[]` | Kontak footer — kosongkan untuk sembunyikan |
+| `contact.socials[]` | Ditampilkan sebagai ikon di kartu profil hero **dan** di footer. Ikon dikenali otomatis dari `label` (GitHub, Instagram, LinkedIn, X/Twitter, YouTube, Facebook, WhatsApp, Telegram, Email); label lain tampil sebagai teks |
+| `contact.email` | Kontak footer — kosongkan untuk sembunyikan |
 
 ## Deploy
 
