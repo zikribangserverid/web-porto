@@ -101,12 +101,156 @@
     });
   }
 
-  // ---------- meta & theme ----------
+  // ---------- meta, theme & SEO ----------
+  function baseUrl() {
+    return String(C.meta.url || "").replace(/\/+$/, "");
+  }
+
+  function absUrl(path) {
+    if (!path) return "";
+    if (/^https?:\/\//.test(path)) return path;
+    return baseUrl() + "/" + String(path).replace(/^\/+/, "");
+  }
+
+  // Judul dari headline: "Web developer &" + "security_" + "engineer"
+  //   -> "Web developer & security engineer"
+  function headlineText() {
+    var h = C.profile.headline;
+    if (!h) return "";
+    return [h.pre, h.highlight, h.post].join(" ")
+      .replace(/_/g, " ").replace(/\s+/g, " ").trim();
+  }
+
+  function upsertMeta(attr, key, content) {
+    if (content == null || content === "") return;
+    var m = document.head.querySelector("meta[" + attr + '="' + key + '"]');
+    if (!m) {
+      m = document.createElement("meta");
+      m.setAttribute(attr, key);
+      document.head.appendChild(m);
+    }
+    m.setAttribute("content", content);
+  }
+
+  function upsertLink(rel, href) {
+    if (!href) return;
+    var l = document.head.querySelector('link[rel="' + rel + '"]');
+    if (!l) {
+      l = document.createElement("link");
+      l.setAttribute("rel", rel);
+      document.head.appendChild(l);
+    }
+    l.setAttribute("href", href);
+  }
+
+  function buildJsonLd() {
+    var url = baseUrl() + "/";
+    var pid = url + "#person";
+    var wid = url + "#website";
+    var socials = activeSocials().map(function (s) { return s.url; });
+    var person = {
+      "@type": "Person",
+      "@id": pid,
+      name: C.profile.name || C.profile.brand,
+      alternateName: C.profile.brand,
+      url: url,
+      jobTitle: headlineText() || undefined,
+      description: (C.profile.bio && C.profile.bio[0]) || C.meta.description,
+      knowsAbout: C.skills && C.skills.length ? C.skills : undefined,
+      address: { "@type": "PostalAddress", addressCountry: "ID" }
+    };
+    if (C.profile.photo) person.image = absUrl(C.profile.photo);
+    if (socials.length) person.sameAs = socials;
+
+    var graph = [
+      person,
+      {
+        "@type": "WebSite",
+        "@id": wid,
+        url: url,
+        name: C.profile.brand,
+        description: C.meta.description,
+        inLanguage: (C.meta.lang || "id") + "-ID",
+        publisher: { "@id": pid }
+      },
+      {
+        "@type": "ProfilePage",
+        "@id": url + "#webpage",
+        url: url,
+        name: C.meta.title,
+        isPartOf: { "@id": wid },
+        about: { "@id": pid },
+        inLanguage: (C.meta.lang || "id") + "-ID"
+      }
+    ];
+
+    if (C.services && C.services.length) {
+      person.hasOfferCatalog = {
+        "@type": "OfferCatalog",
+        name: "Layanan",
+        itemListElement: C.services.map(function (s) {
+          return {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: s.name,
+              description: s.description,
+              provider: { "@id": pid }
+            }
+          };
+        })
+      };
+    }
+
+    return { "@context": "https://schema.org", "@graph": graph };
+  }
+
+  function applySeo() {
+    var m = C.meta || {};
+    var url = baseUrl() + "/";
+    var ogImg = absUrl(m.image);
+    var ht = headlineText();
+    var ogTitle = (C.profile.name || C.profile.brand) + (ht ? " — " + ht : "");
+
+    document.title = m.title || document.title;
+    document.documentElement.lang = m.lang || "id";
+    upsertMeta("name", "description", m.description);
+    upsertMeta("name", "keywords", m.keywords);
+    upsertMeta("name", "author", m.author);
+    upsertLink("canonical", url);
+
+    upsertMeta("property", "og:type", "website");
+    upsertMeta("property", "og:site_name", C.profile.brand);
+    upsertMeta("property", "og:title", ogTitle);
+    upsertMeta("property", "og:description", m.description);
+    upsertMeta("property", "og:url", url);
+    upsertMeta("property", "og:image", ogImg);
+    upsertMeta("property", "og:locale", (m.lang || "id") + "_ID");
+
+    upsertMeta("name", "twitter:card", "summary_large_image");
+    upsertMeta("name", "twitter:title", ogTitle);
+    upsertMeta("name", "twitter:description", m.description);
+    upsertMeta("name", "twitter:image", ogImg);
+    if (m.twitter) {
+      upsertMeta("name", "twitter:site", "@" + m.twitter);
+      upsertMeta("name", "twitter:creator", "@" + m.twitter);
+    }
+
+    // Perbarui JSON-LD dari config (mengganti baseline statis di HTML)
+    try {
+      var ld = document.getElementById("ld-json");
+      if (!ld) {
+        ld = document.createElement("script");
+        ld.type = "application/ld+json";
+        ld.id = "ld-json";
+        document.head.appendChild(ld);
+      }
+      ld.textContent = JSON.stringify(buildJsonLd());
+    } catch (e) { /* JSON-LD statis tetap dipakai kalau gagal */ }
+  }
+
   function applyMetaTheme() {
-    document.title = C.meta.title;
-    var md = document.querySelector('meta[name="description"]');
-    if (md) md.setAttribute("content", C.meta.description);
-    document.documentElement.lang = C.meta.lang || "id";
+    applySeo();
     if (C.theme && C.theme.accent) {
       document.documentElement.style.setProperty("--accent", C.theme.accent);
     }

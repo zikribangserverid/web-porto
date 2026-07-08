@@ -1,0 +1,18 @@
+{
+  "name": "zikri.bangserverid — Web Developer & Security Engineer",
+  "short_name": "zikri.bangserverid",
+  "description": "Portofolio & layanan Zikri: web development, security audit & pentest, server/VPS management.",
+  "lang": "id",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0B1014",
+  "theme_color": "#0B1014",
+  "icons": [
+    {
+      "src": "assets/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

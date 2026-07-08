@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" font-family="'JetBrains Mono','Space Grotesk',monospace">
+  <rect width="1200" height="630" fill="#0B1014"/>
+  <g stroke="#2DD4BF" stroke-width="1" opacity="0.05">
+    <path d="M0 0H1200M0 42H1200M0 84H1200M0 126H1200M0 168H1200M0 210H1200M0 252H1200M0 294H1200M0 336H1200M0 378H1200M0 420H1200M0 462H1200M0 504H1200M0 546H1200M0 588H1200"/>
+    <path d="M0 0V630M42 0V630M84 0V630M126 0V630M168 0V630M210 0V630M252 0V630M294 0V630M336 0V630M378 0V630M420 0V630M462 0V630M504 0V630M546 0V630M588 0V630M630 0V630M672 0V630M714 0V630M756 0V630M798 0V630M840 0V630M882 0V630M924 0V630M966 0V630M1008 0V630M1050 0V630M1092 0V630M1134 0V630M1176 0V630"/>
+  </g>
+  <g stroke="#2DD4BF" stroke-width="3" fill="none" stroke-linecap="round">
+    <path d="M80 60h34v34"/>
+    <path d="M1120 60h-34v34"/>
+    <path d="M80 570h34v-34"/>
+    <path d="M1120 570h-34v-34"/>
+  </g>
+  <text x="90" y="140" fill="#2DD4BF" font-size="26">// zikri.bangserverid:~$ whoami</text>
+  <text x="88" y="270" fill="#F2F7FA" font-family="'Space Grotesk',sans-serif" font-size="104" font-weight="700">Web developer &amp;</text>
+  <text x="88" y="392" font-family="'Space Grotesk',sans-serif" font-size="104" font-weight="700"><tspan fill="#2DD4BF">security_</tspan><tspan fill="#F2F7FA">engineer</tspan></text>
+  <text x="90" y="470" fill="#8B98A5" font-family="'Space Grotesk',sans-serif" font-size="30">Website · Security Audit &amp; Pentest · Server/VPS Management</text>
+  <g transform="translate(90 520)">
+    <circle cx="9" cy="10" r="6" fill="#2DD4BF"/>
+    <text x="28" y="18" fill="#2DD4BF" font-size="24">open for work</text>
+    <text x="1020" y="18" fill="#8B98A5" font-size="24" text-anchor="end">Indonesia</text>
+  </g>
+</svg>

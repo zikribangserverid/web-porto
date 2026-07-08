@@ -3,8 +3,8 @@
   "configurations": [
     {
       "name": "portofolio",
-      "runtimeExecutable": "python3",
-      "runtimeArgs": ["-m", "http.server", "8788"],
+      "runtimeExecutable": "node",
+      "runtimeArgs": [".claude/serve.js"],
       "port": 8788
     }
   ]

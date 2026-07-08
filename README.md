@@ -33,7 +33,11 @@ Static murni — **tanpa framework, tanpa build step, tanpa dependency**.
 | Field | Isi |
 |---|---|
 | `meta.title`, `meta.description` | Judul tab & deskripsi SEO |
-| `meta.url`, `meta.repo` | URL situs & link repo (footer). `repo: ""` menyembunyikan credit |
+| `meta.url` | URL final situs (untuk canonical, Open Graph, sitemap). Isi setelah deploy |
+| `meta.repo` | Link repo (footer). `repo: ""` menyembunyikan credit |
+| `meta.author`, `meta.keywords` | Penulis & kata kunci untuk mesin pencari |
+| `meta.image` | Gambar preview share sosial (1200×630). Otomatis dijadikan URL absolut dari `meta.url` |
+| `meta.twitter` | Handle X/Twitter tanpa `@` (opsional) |
 | `theme.accent` | Warna aksen (default teal `#2DD4BF`) |
 | `profile.brand` | Nama brand — dipakai logo teks & footer |
 | `profile.logo` | Path logo, fallback otomatis ke teks kalau file tidak ada |
@@ -77,6 +81,34 @@ Repo → **Settings** → **Pages** → Source: **Deploy from a branch** → pil
 ### Nginx / Coolify / server sendiri
 
 Cukup serve folder ini sebagai static files — tidak ada proses build.
+
+## SEO & AI indexing
+
+Situs ini sudah disiapkan agar terindeks maksimal di Google dan mesin AI:
+
+- **Meta statis di `<head>` `index.html`** — title, description, keywords, canonical,
+  Open Graph, Twitter Card, dan **JSON-LD** (schema.org `Person` + `WebSite` +
+  `ProfilePage` + daftar layanan). Ini penting karena banyak crawler AI **tidak
+  menjalankan JavaScript**, jadi mereka tetap dapat data lengkap dari HTML mentah.
+- **Sinkron otomatis dari `config.js`** — saat dibuka di browser (dan Googlebot yang
+  merender JS), `js/main.js` memperbarui semua tag di atas + JSON-LD dari `config.js`,
+  jadi cukup edit `config.js` untuk mengubah kontennya.
+- **`robots.txt`** — mengizinkan semua crawler, termasuk AI (GPTBot, ClaudeBot,
+  PerplexityBot, Google-Extended, Applebot, CCBot, dll).
+- **`sitemap.xml`**, **`site.webmanifest`**, **`assets/favicon.svg`**, dan
+  **`assets/og-image.png`** (1200×630; sumbernya `assets/og-image.svg` — edit lalu
+  ekspor ulang kalau mau ganti).
+
+**Wajib dilakukan setelah tahu domain final** (ganti `https://web-porto.pages.dev`):
+
+1. `config.js` → `meta.url` (dipakai JS untuk canonical/OG absolut)
+2. `index.html` → nilai statis `canonical`, `og:url`, `og:image`, `twitter:image`,
+   dan URL di dalam blok JSON-LD (baseline untuk crawler non-JS)
+3. `robots.txt` → baris `Sitemap:`
+4. `sitemap.xml` → `<loc>` dan `<lastmod>`
+
+**Setelah deploy:** daftarkan situs di [Google Search Console](https://search.google.com/search-console)
+dan submit `sitemap.xml` agar cepat terindeks.
 
 ## Lisensi
 

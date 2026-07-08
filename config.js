@@ -4,11 +4,15 @@
 // ============================================================
 window.SITE_CONFIG = {
   meta: {
-    title: "Zikri — Web Developer & Security Engineer",
+    title: "Zikri — Web Developer & Security Engineer | zikri.bangserverid",
     description:
-      "Portofolio zikri.bangserverid — jasa web development, security audit & pentest, dan server management untuk freelancer & UMKM Indonesia.",
-    url: "https://portofolio.pages.dev", // GANTI: URL situs kamu setelah deploy
-    repo: "https://github.com/USERNAME/portofolio", // GANTI: link repo (dipakai di footer). Kosongkan "" untuk sembunyikan
+      "Zikri (zikri.bangserverid) — web developer & security engineer dari Indonesia. Jasa pembuatan website, security audit & pentest, dan manajemen server/VPS untuk freelancer & UMKM.",
+    url: "https://web-porto.pages.dev", // GANTI: URL final situs setelah deploy (atau custom domain)
+    repo: "https://github.com/zikribangserverid/web-porto", // link repo (footer). Kosongkan "" untuk sembunyikan
+    author: "Zikri",
+    keywords: "web developer indonesia, jasa pembuatan website, security audit, penetration testing, pentest website, manajemen server, vps, devops, zikri.bangserverid, freelance developer indonesia",
+    image: "assets/og-image.png", // gambar share sosial/preview (1200x630). Otomatis dijadikan URL absolut dari meta.url
+    twitter: "", // handle X/Twitter tanpa "@" (opsional) — mis. "zikribangserverid"
     lang: "id"
   },
 
@@ -125,8 +129,8 @@ window.SITE_CONFIG = {
     waDefaultMessage: "Halo Zikri, saya lihat portofolio kamu. Bisa diskusi project?",
     email: "kangserverid@gmail.com", // GANTI kalau perlu. Kosongkan "" untuk sembunyikan
     socials: [
-      { label: "GitHub", url: "https://github.com/USERNAME" }, // GANTI
-      { label: "Instagram", url: "https://instagram.com/USERNAME" } // GANTI
+      { label: "GitHub", url: "https://github.com/zikribangserverid" }, // GANTI kalau berbeda
+      { label: "Instagram", url: "" } // GANTI: isi URL Instagram kamu (kosong = tidak tampil)
     ]
   }
 };
