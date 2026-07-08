@@ -12,8 +12,17 @@
   }
 
   function waLink(message) {
-    return "https://wa.me/" + C.contact.whatsapp +
-      "?text=" + encodeURIComponent(message || "");
+    var wa = String(C.contact.whatsapp || "").trim();
+    var base;
+    if (/wa\.me|whatsapp\.com|^https?:\/\//i.test(wa)) {
+      // Sudah berupa URL (mis. "https://wa.me/62812..." atau "wa.me/62812...")
+      base = /^https?:\/\//i.test(wa) ? wa : "https://" + wa.replace(/^\/+/, "");
+    } else {
+      // Angka saja (mis. "62812...") — buang karakter non-digit
+      base = "https://wa.me/" + wa.replace(/[^0-9]/g, "");
+    }
+    var sep = base.indexOf("?") > -1 ? "&" : "?";
+    return base + sep + "text=" + encodeURIComponent(message || "");
   }
 
   function extLink(node, href) {

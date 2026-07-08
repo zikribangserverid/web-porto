@@ -125,7 +125,7 @@ window.SITE_CONFIG = {
   ],
 
   contact: {
-    whatsapp: "6285117142879", // GANTI: nomor WA kamu, format internasional tanpa + (angka saja)
+    whatsapp: "6285117142879", // GANTI: boleh angka saja (62812...) ATAU URL lengkap (https://wa.me/62812...)
     waDefaultMessage: "Halo Zikri, saya lihat portofolio kamu. Bisa diskusi project?",
     email: "kangserverid@gmail.com", // GANTI kalau perlu. Kosongkan "" untuk sembunyikan
     socials: [
