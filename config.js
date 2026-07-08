@@ -69,7 +69,7 @@ window.SITE_CONFIG = {
       name: "Warung Juragan",
       description:
         "Aplikasi manajemen produk, kasir, dan keuangan untuk warung & UMKM — dari pencatatan stok sampai laporan keuangan harian.",
-      image: "https://cdn.scalev.com/uploads/1783034484/oKJ2an2mrZruLwHF68QkMA/1783034484481-khaleed.webp",
+      image: "https://cdn.scalev.com/uploads/1783550749/mtT3kK_SBiSIvbgTp-_9JA/1783550749489-Screenshot_9-7-2026_54534_warung-juragan.karsaweb.id.webp",
       tech: ["FastAPI", "Expo", "MongoDB"],
       url: "",
       status: "live"
