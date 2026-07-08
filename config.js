@@ -60,7 +60,7 @@ window.SITE_CONFIG = {
       name: "Khaleed",
       description:
         "Security + Infrastructure Operations Platform — passive & active scan, incident response, log analyzer, malware scan, dan domain monitoring dalam satu dashboard. Dibangun untuk freelancer web & agency Indonesia.",
-      image: "", // opsional: "assets/khaleed.png" — kosong = placeholder inisial
+      image: "https://cdn.scalev.com/uploads/1783034484/oKJ2an2mrZruLwHF68QkMA/1783034484481-khaleed.webp", // opsional: "assets/khaleed.png" — kosong = placeholder inisial
       tech: ["FastAPI", "React", "PostgreSQL", "Docker"],
       url: "https://app.pentestbykhaleed.com",
       status: "live" // "live" | "wip" | "archived"
@@ -69,7 +69,7 @@ window.SITE_CONFIG = {
       name: "Warung Juragan",
       description:
         "Aplikasi manajemen produk, kasir, dan keuangan untuk warung & UMKM — dari pencatatan stok sampai laporan keuangan harian.",
-      image: "",
+      image: "https://cdn.scalev.com/uploads/1783034484/oKJ2an2mrZruLwHF68QkMA/1783034484481-khaleed.webp",
       tech: ["FastAPI", "Expo", "MongoDB"],
       url: "",
       status: "live"
