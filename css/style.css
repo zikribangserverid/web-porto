@@ -1,0 +1,85 @@
+:root {
+  --bg: #0B1014;
+  --panel: #10171D;
+  --panel-2: #141D25;
+  --line: #1E2A33;
+  --line-strong: #2A3843;
+  --text: #E6EDF3;
+  --text-2: #B9C6D0;
+  --heading: #F2F7FA;
+  --muted: #8B98A5;
+  --accent: #2DD4BF;
+  --accent-ink: #04342C;
+  --accent-dim: color-mix(in srgb, var(--accent) 10%, transparent);
+  --font-sans: "Space Grotesk", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; color-scheme: dark; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+main > * { padding: 96px 0; }
+
+a { color: var(--accent); text-decoration: none; }
+a:focus-visible, button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.btn {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 15px;
+  padding: 10px 20px;
+  border-radius: 4px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: transform .15s ease, filter .15s ease, border-color .15s ease, color .15s ease;
+}
+.btn-sm { padding: 7px 14px; font-size: 14px; }
+.btn-accent { background: var(--accent); color: var(--accent-ink); }
+.btn-accent:hover { transform: translateY(-1px); filter: brightness(1.08); }
+.btn-outline { background: transparent; color: var(--text); border-color: var(--line-strong); }
+.btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  padding: 3px 10px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  color: var(--text-2);
+}
+
+.section-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--heading);
+  margin-bottom: 40px;
+}
+.section-title .num {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  color: var(--accent);
+  margin-right: 8px;
+}
+
+.noscript {
+  padding: 48px 24px;
+  text-align: center;
+  font-family: var(--font-mono);
+  color: var(--muted);
+}
