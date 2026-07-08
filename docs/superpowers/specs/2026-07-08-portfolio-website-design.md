@@ -16,7 +16,7 @@ Website portofolio satu halaman untuk brand **zikri.bangserverid**, sekaligus **
 
 - Bahasa konten: Indonesia
 - Nomor WA: placeholder `6281234567890` (diganti pemilik sebelum deploy)
-- Desain: minimalis, neobrutalism ringan, tech-savvy, aksen biru teal (dari logo)
+- Desain: **dark cyber modern** — minimalis, flat, tech-savvy, bergaya security dashboard/terminal, aksen teal terang (turunan warna logo). *(Revisi dari draft awal yang neobrutalism terang — diputuskan bersama user 2026-07-08.)*
 - Logo: file `assets/logo.png` (disediakan user); ada fallback logo teks jika file tidak ada
 - Static murni: bisa deploy ke GitHub Pages, Cloudflare Pages, nginx, atau Coolify
 - Lisensi MIT, README berisi panduan kustomisasi
@@ -43,7 +43,7 @@ portofolio/
 ```js
 window.SITE_CONFIG = {
   meta: { title, description, url, lang: "id" },
-  theme: { accent: "#0D7377" },            // satu-satunya knob warna
+  theme: { accent: "#2DD4BF" },            // satu-satunya knob warna
   profile: {
     brand: "zikri.bangserverid",           // fallback logo teks
     logo: "assets/logo.png",               // opsional
@@ -73,54 +73,68 @@ Link CTA dibangun runtime: `https://wa.me/{whatsapp}?text={encodeURIComponent(wa
 
 | Token | Nilai | Catatan |
 |---|---|---|
-| `--bg` | `#FAFAF7` | off-white, hangat |
-| `--surface` | `#FFFFFF` | kartu |
-| `--ink` | `#14181B` | teks & border utama |
-| `--muted` | `#5C6670` | teks sekunder |
-| `--accent` | `#0D7377` | teal dari logo (dari `theme.accent`) |
-| `--accent-soft` | `#E0F2F1` | latar chip/badge teal |
-| border | `2px solid var(--ink)` | ciri neobrutalism |
-| shadow | `4px 4px 0 var(--ink)` | hard shadow, tanpa blur |
-| shadow hover | `6px 6px 0 var(--ink)` | kartu "terangkat" |
-| radius | `6px` | "ringan" — tidak lancip penuh |
+| `--bg` | `#0B1014` | latar utama, biru-hitam pekat |
+| `--panel` | `#10171D` | kartu/panel |
+| `--panel-2` | `#141D25` | hover panel / title bar terminal |
+| `--line` | `#1E2A33` | border tipis 1px default |
+| `--line-strong` | `#2A3843` | border tombol outline / hover |
+| `--text` | `#E6EDF3` | teks utama |
+| `--heading` | `#F2F7FA` | judul |
+| `--muted` | `#8B98A5` | teks sekunder |
+| `--accent` | `#2DD4BF` | teal terang (dari `theme.accent`) |
+| `--accent-ink` | `#04342C` | teks di atas tombol accent |
+| `--accent-dim` | `#2DD4BF1A` | latar badge/chip teal (10% alpha) |
+| border | `1px solid var(--line)` | flat, tanpa shadow |
+| radius | `4px` | tegas, sedikit membulat |
 | font display/body | Space Grotesk (Google Fonts) | modern grotesk |
-| font mono | JetBrains Mono | eyebrow, chips, label, angka section |
+| font mono | JetBrains Mono | prompt, chips, label HUD, angka section |
 | container | max-width `1080px` | padding samping 24px |
 | section spacing | `96px` desktop / `64px` mobile | |
 
-Kesan "neobrutalism ringan": border tegas + hard shadow **hanya** pada elemen interaktif (kartu, tombol, chip) — bukan pada setiap kotak. Latar tetap lapang dan putih, tipografi besar, banyak whitespace → sisi minimalisnya.
+Prinsip **dark cyber modern**: flat total — tanpa drop shadow, tanpa glow berlebih, tanpa gradien. Kedalaman dibangun dari tingkatan warna panel (`--bg` → `--panel` → `--panel-2`) dan border tipis. Teal terang dipakai hemat: prompt, status, marker, tombol utama — supaya tiap kemunculannya "menyala".
 
-Aksen tech-savvy: elemen monospace (eyebrow `$ whoami`, penomoran section `01.`), terminal card di hero, background grid garis tipis (opacity rendah) di section hero saja.
+Elemen cyber/HUD (dipakai terukur, bukan di semua tempat):
+- **Corner brackets** teal di sudut elemen unggulan (terminal card hero, thumbnail project)
+- **Microlabel mono uppercase** dengan LED dot: `● SYS.ONLINE` di navbar, `● live` di panel
+- **Prompt marker** `>` dan `$` teal untuk list dan eyebrow (`// zikri@bangserverid:~$ whoami`)
+- **Grid background** garis teal opacity ~4% di hero saja
+- **Kursor blink** `▊` di akhir baris status terminal (animasi CSS sederhana)
+- Penomoran section mono teal: `01.` `02.` `03.`
+
+### 5.1b Logo di latar gelap
+
+Logo asli (teal gelap) berpotensi kurang kontras di `--bg`. Solusi: README menyarankan versi logo terang; fallback logo teks mono (`zikri.bangserverid` dengan titik teal menyala) sudah terlihat bagus di dark dan jadi default yang aman untuk semua pemakai template.
 
 ### 5.2 Struktur halaman (atas → bawah)
 
-**Navbar** — sticky, latar `--bg` + border-bottom 2px.
-Kiri: logo (`assets/logo.png`, tinggi 36px; fallback teks mono `zikri.bangserverid` dengan titik teal). Kanan: link `Profil · Project · Layanan` + tombol **WhatsApp** (accent, hard shadow). Mobile: link disembunyikan, sisakan logo + tombol WA (semua section tetap terjangkau lewat scroll).
+**Navbar** — sticky, latar `--bg` semi-transparan (backdrop-blur ringan) + border-bottom 1px `--line`.
+Kiri: logo (`assets/logo.png`, tinggi 32px; fallback teks mono `zikri.bangserverid` dengan titik teal). Tengah/kanan: link `Profil · Project · Layanan`, microlabel `● SYS.ONLINE` (LED teal berkedip pelan), tombol **WhatsApp** (solid accent, teks `--accent-ink`). Mobile: link disembunyikan, sisakan logo + tombol WA (semua section tetap terjangkau lewat scroll).
 
-**Hero** — grid 2 kolom (55/45), latar grid-lines halus.
-- Kiri: eyebrow mono teal `$ whoami`, H1 besar (nama, kata kunci di-highlight blok teal), 1 paragraf tagline, dua tombol: `Lihat Project ↓` (outline) dan `Konsultasi via WA` (accent).
-- Kanan: **terminal card** dekoratif — title bar dengan 3 dot + `zikri@bangserverid:~`, isi output mono dari config: `role`, `location`, `focus`, `status: open for work` (hijau terminal). Border 2px + hard shadow.
-- Mobile: satu kolom, terminal card di bawah teks.
+**Hero** — grid 2 kolom (55/45), latar grid-lines teal ~4%.
+- Kiri: eyebrow mono teal `// zikri@bangserverid:~$ whoami`, H1 besar warna `--heading` (kata kunci diberi warna teal + underscore gaya kode: `security_`), 1 paragraf tagline `--muted`, dua tombol: `Konsultasi via WA` (accent) dan `Lihat project` (outline).
+- Kanan: **panel terminal** dekoratif dalam corner brackets teal — title bar `audit.log` + `● live`, isi output mono dari config: `role`, `lokasi`, `fokus`, `status: open for work` (teal, kursor `▊` blink).
+- Mobile: satu kolom, panel terminal di bawah teks.
 
 **Section Profil (`01.`)** — heading `01. Profil` (angka mono teal).
-Grid 2 kolom: kiri bio (2–3 paragraf dari `profile.bio`), kanan blok **Skills**: chips mono ber-border 2px, wrap. Chip tanpa shadow (elemen non-interaktif).
+Grid 2 kolom: kiri bio (2–3 paragraf dari `profile.bio`), kanan panel **Skills** (`--panel`, border 1px): chips mono, wrap.
 
 **Section Project (`02.`)** — grid kartu 2 kolom (1 kolom di mobile).
-Kartu: thumbnail rasio 16:9 (gambar dari config; fallback: blok accent-soft berisi inisial project besar dalam mono), badge status di pojok (Live = accent solid teks putih; WIP = amber), judul, deskripsi 2–3 baris, chips tech kecil, link `Kunjungi ↗` mono. Hover: kartu naik (translate -2px) + shadow membesar.
+Kartu (`--panel`, border 1px): thumbnail rasio 16:9 (gambar dari config; fallback: blok `--panel-2` + corner brackets + inisial project mono teal besar), badge status mono di pojok (`● LIVE` teal di `--accent-dim`; `● WIP` amber), judul, deskripsi 2–3 baris, chips tech kecil, link `Kunjungi ↗` mono teal. Hover: border berubah `--accent`, judul ikut teal.
 
 **Section Layanan (`03.`)** — grid 3 kartu (1 kolom mobile). Kartu paling "kuat" di halaman:
-ikon (SVG outline dari subset template: `code`, `shield`, `server`, dll), judul, deskripsi, daftar fitur dengan marker mono `+` teal, garis pemisah, `priceNote` kecil (mis. *"Harga menyesuaikan scope — konsultasi gratis"*), tombol **Chat via WhatsApp** full-width accent dengan pesan pre-filled per layanan.
+ikon outline teal (subset SVG template: `code`, `shield`, `server`, dll), judul, deskripsi, daftar fitur dengan marker mono `>` teal, garis pemisah 1px, `priceNote` kecil mono (mis. *"harga menyesuaikan scope — konsultasi gratis"*), tombol **Chat via WhatsApp** full-width solid accent dengan pesan pre-filled per layanan.
 
-**Footer** — latar `--ink` (satu-satunya blok gelap; kontras penutup).
-Logo/brand, link sosial dari config, copyright, credit kecil: *"Template open-source — fork di GitHub"* (link repo).
+**Footer** — border-top 1px `--line`, latar `--bg`.
+Logo/brand, link sosial dari config, copyright mono kecil, credit: *"Template open-source — fork di GitHub"* (link repo).
 
 ### 5.3 Komponen & interaksi
 
-- **Tombol**: 2 varian — `accent` (bg teal, teks putih) dan `outline` (bg surface). Keduanya border 2px + shadow 4px. Hover: translate(-2px,-2px), shadow 6px. Active: translate(2px,2px), shadow 0 (efek "ditekan").
-- **Kartu**: surface, border 2px, shadow 4px, radius 6px. Hover (yang punya link): naik + shadow 6px.
-- **Chips**: mono 13px, border 2px, radius 4px, tanpa shadow.
-- **Scroll**: `scroll-behavior: smooth`; reveal ringan per section (fade + translateY 16px) via IntersectionObserver — sekali jalan, tanpa library.
-- **Aksesibilitas**: kontras AA (teal `#0D7377` di atas putih lolos untuk teks besar/tombol), focus-visible ring tegas, alt text gambar dari config, HTML semantik (`nav`, `main`, `section`, `footer`).
+- **Tombol**: 2 varian — `accent` (bg `--accent`, teks `--accent-ink`, radius 4px) dan `outline` (transparan, border 1px `--line-strong`). Hover accent: sedikit lebih terang + translate -1px; hover outline: border & teks jadi teal. Flat, tanpa shadow.
+- **Kartu/panel**: `--panel`, border 1px `--line`, radius 4px. Hover (yang punya link): border `--accent`.
+- **Chips**: mono 12–13px, latar `--accent-dim` atau transparan ber-border `--line`, teks `--text`.
+- **Corner brackets**: pseudo-element 4 sudut (border teal 1.5px, 14px) pada terminal hero & thumbnail project.
+- **Animasi khas** (hemat, CSS murni): kursor `▊` blink di terminal; LED `SYS.ONLINE` pulse pelan; reveal per section (fade + translateY 16px) via IntersectionObserver — sekali jalan, tanpa library. Hormati `prefers-reduced-motion`.
+- **Aksesibilitas**: kontras AA di dark (`#E6EDF3` di `#0B1014` ≈ 15:1; `#2DD4BF` di `#0B1014` ≈ 9:1; `#04342C` di `#2DD4BF` lolos), focus-visible ring teal tegas, alt text gambar dari config, HTML semantik (`nav`, `main`, `section`, `footer`), `color-scheme: dark`.
 
 ### 5.4 Responsive
 
@@ -152,13 +166,14 @@ Logo/brand, link sosial dari config, copyright, credit kecil: *"Template open-so
 
 ## 8. Di luar scope (v1)
 
-Dark mode, blog, form kontak, analytics, i18n toggle, animasi kompleks, CMS/admin.
+Light mode / toggle tema (situs dark-only), blog, form kontak, analytics, i18n toggle, animasi kompleks (glitch/typing effect), CMS/admin.
 
 ## 9. Verifikasi
 
 - Buka `index.html` langsung via file/local server — semua section terrender dari config.
 - Ubah `theme.accent` → warna aksen berubah di seluruh halaman.
 - Kosongkan `projects` → section Project hilang tanpa error.
-- Hapus `assets/logo.png` → fallback logo teks muncul.
+- Hapus `assets/logo.png` → fallback logo teks muncul (dan tetap kontras di latar gelap).
+- Set `prefers-reduced-motion` → animasi blink/pulse/reveal mati.
 - Klik CTA layanan → membuka `wa.me` dengan pesan pre-filled yang benar (URL-encoded).
 - Cek responsive di 375px, 768px, 1280px.
