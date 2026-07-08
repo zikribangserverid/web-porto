@@ -25,7 +25,7 @@ window.SITE_CONFIG = {
   profile: {
     brand: "zikri.bangserverid",
     logo: "assets/logo.png", // opsional — kalau file tidak ada, otomatis fallback ke logo teks
-    photo: "assets/profile.jpg", // GANTI: foto profil untuk kartu di hero. Kalau file tidak ada, otomatis fallback ke monogram inisial
+    photo: "https://github.com/zikribangserverid.png", // GANTI: URL gambar ATAU path lokal (mis. "assets/profile.jpg"). Kalau gagal dimuat, otomatis fallback ke monogram inisial
     name: "Zikri",
     headline: {
       pre: "Web developer &",
